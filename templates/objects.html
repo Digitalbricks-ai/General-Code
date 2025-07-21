@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Objects</h1>
+<form method="post">
+    <input type="text" name="name" placeholder="Object Name" required>
+    <button type="submit">Add Object</button>
+</form>
+<ul>
+{% for o in objects.values() %}
+    <li>{{ o['name'] }} (Relationships: {{ o['relationships']|length }})</li>
+{% endfor %}
+</ul>
+{% endblock %}

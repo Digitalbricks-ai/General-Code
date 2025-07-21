@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Relationships</h1>
+<form method="post">
+    <label>Dossier:
+        <select name="dossier_id">
+        {% for id, d in dossiers.items() %}
+            <option value="{{ id }}">{{ d['name'] }}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <label>Object:
+        <select name="object_id">
+        {% for id, o in objects.items() %}
+            <option value="{{ id }}">{{ o['name'] }}</option>
+        {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Create Relationship</button>
+</form>
+<ul>
+{% for r in relationships %}
+    <li>{{ dossiers[r['dossier']]['name'] }} - {{ objects[r['object']]['name'] }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
